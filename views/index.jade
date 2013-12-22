@@ -20,3 +20,25 @@ block content
          del #{todo.description}
        div
          | #{todo.due.toDateString()}
+   div.container
+     h1 My Todo List
+     h2 Upcoming
+     - each todo in todos
+       - if (!todo.done)
+         div.row
+           div.span9
+             label.checkbox
+               input(type="checkbox")
+               | #{todo.description}
+           div.span3.text-right
+             i #{todo.due.toDateString()}
+     h2 Done
+     - each todo in todos
+       - if (todo.done)
+         div.row
+           div.span9
+             label.checkbox
+               input(type="checkbox", checked="true")
+               del #{todo.description}
+           div.span3.text-right
+             i #{todo.due.toDateString()}
